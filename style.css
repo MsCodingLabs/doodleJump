@@ -1,0 +1,156 @@
+/* Hintergrund und Layout für die gesamte Seite */
+body {
+  background: linear-gradient(to bottom, #87ceeb, #1e90ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  flex-direction: column; /* Start-Screen erscheint über dem Spielfeld */
+}
+
+/* Startbildschirm zentriert in der Mitte */
+.start-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  width: 80%; /* Passt sich kleineren Bildschirmen an */
+  max-width: 250px;
+}
+
+/* Start-Button Styling */
+#start-button {
+  padding: 12px 25px;
+  font-size: 18px;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+/* Button Hover-Effekt */
+#start-button:hover {
+  background-color: #45a049;
+}
+
+/* Spielfeld (Grid) – anfangs unsichtbar */
+.grid {
+  position: relative;
+  width: 400px;
+  height: 600px;
+  background-color: #ecf0f1;
+  overflow: hidden;
+  border: 5px solid #2c3e50;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  display: none; /* Wird erst beim Start angezeigt */
+  margin-top: 20px;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Spielerfigur (Doodler) mit Bild */
+.doodler {
+  width: 60px;
+  height: 85px;
+  background: url("images/doodler-quy.png") no-repeat center/contain;
+  position: absolute;
+  transition: transform 0.1s ease-in-out;
+}
+
+/* Plattformen mit Bild */
+.platform {
+  position: absolute;
+  width: 85px;
+  height: 15px;
+  background: url("images/platform.png") no-repeat center/contain;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Plattform wird heller beim Berühren */
+.platform:hover {
+  filter: brightness(
+    1.2
+  ); /* Plattform wird etwas heller, wenn Doodler darauf landet */
+}
+
+/* Sprunganimation für Doodler */
+.doodler.jumping {
+  animation: jumpAnimation 0.3s ease-out;
+}
+
+@keyframes jumpAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-100px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Fallanimation für Doodler */
+.doodler.falling {
+  animation: fallAnimation 0.3s ease-in;
+}
+
+@keyframes fallAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(150px);
+  }
+}
+
+/* Game-Over-Nachricht mittig */
+.game-over {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  max-width: 300px;
+}
+
+/* Responsive Design: kleinere Anpassungen für Mobilgeräte */
+@media (max-width: 600px) {
+  .grid {
+    width: 90%;
+    height: 500px;
+  }
+
+  .start-screen {
+    width: 90%;
+    padding: 20px;
+  }
+
+  #start-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+}
