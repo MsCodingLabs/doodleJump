@@ -4,6 +4,9 @@
 
 Originally a simple concept, *Doodle Jump* became a mobile gaming phenomenon thanks to its endless, high-score-chasing fun. Now you can play a browser-based version built with web technologies.
 
+## Screenshot
+![doodleJump.png](https://github.com/MsCodingLabs/quizze/blob/main/quizze.png)
+
 ## 🕹️ Gameplay
 
 Jump from platform to platform, avoid enemies and obstacles, and aim for the highest score possible. One wrong move – and you fall!
